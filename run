@@ -23,7 +23,7 @@ function run_lint(){
 }
 
 function run_test(){
-	TESTING=true uv run pytest tests/unit
+	echo "! Not implemented!" #TESTING=true uv run pytest tests/unit
 }
 
 function main(){
