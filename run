@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+THISDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+test -f "$THISDIR/.env" && source "$THISDIR/.env"
+
+function help(){
+cat << EOF
+police-py
+
+restore  : Fetch dependencies
+lint     : Run linter
+test     : Run tests, defaults to all
+EOF
+}
+
+function run_restore(){
+	uv sync
+}
+
+function run_lint(){
+	uv run ruff check src/
+}
+
+function run_test(){
+	TESTING=true uv run pytest tests/unit
+}
+
+function main(){
+	cmd=${1-default}
+	shift || true
+	case "$cmd" in
+		default|help)
+			help "$@"
+			;;
+		restore)
+			run_restore
+			;;
+		lint)
+			run_lint
+			;;
+		test)
+			run_test "$@"
+			;;
+		*)
+			echo "no-op $cmd"
+			;;
+	esac
+}
+
+main "$@"
