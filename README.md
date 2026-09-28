@@ -83,14 +83,14 @@ from police_py.neighbourhood import get_neighbourhood_bounds, get_neighbourhood_
 
 # Define the force and neighborhood ID
 force = "met"
-nbhd = "neighborhood_id_here"
+neighbourhood = "neighborhood_id_here"
 
 # Get boundaries
-bounds = get_neighbourhood_bounds(force,nbhd)
+bounds = get_neighbourhood_bounds(force, neighbourhood)
 print(bounds.json())
 
 # Get priorities
-priorities = get_neighbourhood_priorities(force,nbhd)
+priorities = get_neighbourhood_priorities(force, neighbourhood)
 print(priorities.json())
 ```
 
