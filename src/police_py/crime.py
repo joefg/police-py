@@ -1,9 +1,9 @@
-import httpx
+import httpx2
 
 
 def get_street_level_crimes_point(
     lat: float, lng: float, date: str | None = None
-) -> httpx.Response:
+) -> httpx2.Response:
     """Get street-level crime reports within one mile of a single point.
 
     Parameters:
@@ -15,10 +15,10 @@ def get_street_level_crimes_point(
 
     args = f"date={date}&" if date else ""
     args += f"lat={lat}&lng={lng}"
-    return httpx.get(f"https://data.police.uk/api/crimes-street/all-crime?{args}")
+    return httpx2.get(f"https://data.police.uk/api/crimes-street/all-crime?{args}")
 
 
-def get_street_level_crimes_poly(poly: str, date: str | None = None) -> httpx.Response:
+def get_street_level_crimes_poly(poly: str, date: str | None = None) -> httpx2.Response:
     """Get street-level crime reports within a custom polygon.
 
     Parameters:
@@ -31,12 +31,12 @@ def get_street_level_crimes_poly(poly: str, date: str | None = None) -> httpx.Re
 
     args = f"date={date}&" if date else ""
     args += f"poly={poly}"
-    return httpx.get(f"https://data.police.uk/api/crimes-street/all-crime?{args}")
+    return httpx2.get(f"https://data.police.uk/api/crimes-street/all-crime?{args}")
 
 
 def get_street_level_outcomes_point(
     lat: float, lng: float, date: str | None = None
-) -> httpx.Response:
+) -> httpx2.Response:
     """Get street-level crime outcomes within one mile of a single point.
 
     Parameters:
@@ -48,12 +48,12 @@ def get_street_level_outcomes_point(
 
     args = f"date={date}&" if date else ""
     args += f"lat={lat}&lng={lng}"
-    return httpx.get(f"https://data.police.uk/api/outcomes-at-location?{args}")
+    return httpx2.get(f"https://data.police.uk/api/outcomes-at-location?{args}")
 
 
 def get_street_level_outcomes_poly(
     poly: str, date: str | None = None
-) -> httpx.Response:
+) -> httpx2.Response:
     """Get street-level crime outcomes within a custom polygon.
 
     Parameters:
@@ -66,12 +66,12 @@ def get_street_level_outcomes_poly(
 
     args = f"date={date}&" if date else ""
     args += f"poly={poly}"
-    return httpx.get(f"https://data.police.uk/api/outcomes-at-location?{args}")
+    return httpx2.get(f"https://data.police.uk/api/outcomes-at-location?{args}")
 
 
 def get_crimes_with_no_location(
     category: str, force: str, date: str | None = None
-) -> httpx.Response:
+) -> httpx2.Response:
     """Get crimes for a force that could not be mapped to a location.
 
     Parameters:
@@ -85,25 +85,25 @@ def get_crimes_with_no_location(
 
     args = f"date={date}&" if date else ""
     args += f"category={category}&force={force}&"
-    return httpx.get(f"https://data.police.uk/api/crimes-no-location?{args}")
+    return httpx2.get(f"https://data.police.uk/api/crimes-no-location?{args}")
 
 
-def get_crime_categories(date: str) -> httpx.Response:
+def get_crime_categories(date: str) -> httpx2.Response:
     """Get a list of valid categories for a given data set date.
 
     Parameters:
     date: `str`
         Reporting month, in format <yyyy-mm>.
     """
-    return httpx.get(f"https://data.police.uk/api/crime-categories?date={date}")
+    return httpx2.get(f"https://data.police.uk/api/crime-categories?date={date}")
 
 
-def get_crime_last_updates() -> httpx.Response:
+def get_crime_last_updates() -> httpx2.Response:
     """Get a date of when crime data in the API was last updated."""
-    return httpx.get("https://data.police.uk/api/crime-last-updated")
+    return httpx2.get("https://data.police.uk/api/crime-last-updated")
 
 
-def get_crime_outcome(crime_id: str) -> httpx.Response:
+def get_crime_outcome(crime_id: str) -> httpx2.Response:
     """Return the case history for a specified crime.
 
     Parameters:
@@ -111,4 +111,4 @@ def get_crime_outcome(crime_id: str) -> httpx.Response:
         A 64-character identifier for a crime as returned by other
         API methods.
     """
-    return httpx.get(f"https://data.police.uk/api/outcomes-for-crime/{crime_id}")
+    return httpx2.get(f"https://data.police.uk/api/outcomes-for-crime/{crime_id}")
