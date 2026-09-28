@@ -1,6 +1,6 @@
-import httpx
+import httpx2
 
-def get_neighbourhoods(force: str) -> httpx.Response:
+def get_neighbourhoods(force: str) -> httpx2.Response:
     """Get neighbourhoods for a given force.
 
     Parameters:
@@ -8,10 +8,10 @@ def get_neighbourhoods(force: str) -> httpx.Response:
        Police force
     """
 
-    return httpx.get(f"https://data.police.uk/api/{force}/neighbourhoods")
+    return httpx2.get(f"https://data.police.uk/api/{force}/neighbourhoods")
 
 
-def get_neighbourhood(force: str, neighbourhood: str) -> httpx.Response:
+def get_neighbourhood(force: str, neighbourhood: str) -> httpx2.Response:
     """Get a specific neighbourhood.
 
     Parameters:
@@ -22,10 +22,10 @@ def get_neighbourhood(force: str, neighbourhood: str) -> httpx.Response:
         calls for the service.
     """
 
-    return httpx.get(f"https://data.police.uk/api/{force}/{neighbourhood}")
+    return httpx2.get(f"https://data.police.uk/api/{force}/{neighbourhood}")
 
 
-def get_neighbourhood_bounds(force: str, neighbourhood: str) -> httpx.Response:
+def get_neighbourhood_bounds(force: str, neighbourhood: str) -> httpx2.Response:
     """Get a specific neighbourhood's bounds.
 
     Parameters:
@@ -39,10 +39,10 @@ def get_neighbourhood_bounds(force: str, neighbourhood: str) -> httpx.Response:
     List of lon/lat pairs describing the boundary.
     """
 
-    return httpx.get(f"https://data.police.uk/api/{force}/{neighbourhood}/boundary")
+    return httpx2.get(f"https://data.police.uk/api/{force}/{neighbourhood}/boundary")
 
 
-def get_neighbourhood_team(force: str, neighbourhood: str) -> httpx.Response:
+def get_neighbourhood_team(force: str, neighbourhood: str) -> httpx2.Response:
     """Get a specific neighbourhood's team.
 
     Parameters:
@@ -53,10 +53,10 @@ def get_neighbourhood_team(force: str, neighbourhood: str) -> httpx.Response:
         calls for the service.
     """
 
-    return httpx.get(f"https://data.police.uk/api/{force}/{neighbourhood}/people")
+    return httpx2.get(f"https://data.police.uk/api/{force}/{neighbourhood}/people")
 
 
-def get_neighbourhood_events(force: str, neighbourhood: str) -> httpx.Response:
+def get_neighbourhood_events(force: str, neighbourhood: str) -> httpx2.Response:
     """Get a specific neighbourhood's events.
 
     Parameters:
@@ -67,10 +67,10 @@ def get_neighbourhood_events(force: str, neighbourhood: str) -> httpx.Response:
         calls for the service.
     """
 
-    return httpx.get(f"https://data.police.uk/api/{force}/{neighbourhood}/events")
+    return httpx2.get(f"https://data.police.uk/api/{force}/{neighbourhood}/events")
 
 
-def get_neighbourhood_priorities(force: str, neighbourhood: str) -> httpx.Response:
+def get_neighbourhood_priorities(force: str, neighbourhood: str) -> httpx2.Response:
     """Get a specific neighbourhood's priorities.
 
     Parameters:
@@ -81,10 +81,10 @@ def get_neighbourhood_priorities(force: str, neighbourhood: str) -> httpx.Respon
         calls for the service.
     """
 
-    return httpx.get(f"https://data.police.uk/api/{force}/{neighbourhood}/priorities")
+    return httpx2.get(f"https://data.police.uk/api/{force}/{neighbourhood}/priorities")
 
 
-def get_neighbourhood_location(lng: float, lat: float) -> httpx.Response:
+def get_neighbourhood_location(lng: float, lat: float) -> httpx2.Response:
     """Get a specific neighbourhood's priorities.
 
     Parameters:
@@ -92,4 +92,4 @@ def get_neighbourhood_location(lng: float, lat: float) -> httpx.Response:
         lat: `float`
     """
 
-    return httpx.get(f"https://data.police.uk/api/locate-neighbourhood?q={lat},{lng}")
+    return httpx2.get(f"https://data.police.uk/api/locate-neighbourhood?q={lat},{lng}")

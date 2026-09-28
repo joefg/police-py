@@ -1,9 +1,9 @@
-import httpx
+import httpx2
 
 
 def get_stop_and_searches_point(
     lat: float, lng: float, date: str | None = None
-) -> httpx.Response:
+) -> httpx2.Response:
     """Get stop-and-search reports within one mile of a single point.
 
     Parameters:
@@ -15,10 +15,10 @@ def get_stop_and_searches_point(
 
     args = f"date={date}&" if date else ""
     args += f"lat={lat}&lng={lng}"
-    return httpx.get(f"https://data.police.uk/api/stops-street?{args}")
+    return httpx2.get(f"https://data.police.uk/api/stops-street?{args}")
 
 
-def get_stop_and_searches_poly(poly: str, date: str | None = None) -> httpx.Response:
+def get_stop_and_searches_poly(poly: str, date: str | None = None) -> httpx2.Response:
     """Get stop-and-search crime reports within a custom polygon.
 
     Parameters:
@@ -31,12 +31,12 @@ def get_stop_and_searches_poly(poly: str, date: str | None = None) -> httpx.Resp
 
     args = f"date={date}&" if date else ""
     args += f"poly={poly}"
-    return httpx.get(f"https://data.police.uk/api/stops-street?{args}")
+    return httpx2.get(f"https://data.police.uk/api/stops-street?{args}")
 
 
 def get_stop_and_searches_at_location(
     location: str, date: str | None = None
-) -> httpx.Response:
+) -> httpx2.Response:
     """Get stop-and-searches for a particular location.
 
     Parameters:
@@ -48,12 +48,12 @@ def get_stop_and_searches_at_location(
 
     args = f"date={date}&" if date else ""
     args += f"location={location}&"
-    return httpx.get(f"https://data.police.uk/api/stops-no-location?{args}")
+    return httpx2.get(f"https://data.police.uk/api/stops-no-location?{args}")
 
 
 def get_stop_and_searches_with_no_location(
     force: str, date: str | None = None
-) -> httpx.Response:
+) -> httpx2.Response:
     """Get stop-and-searches for a force that could not be mapped to a location.
 
     Parameters:
@@ -65,10 +65,10 @@ def get_stop_and_searches_with_no_location(
 
     args = f"date={date}&" if date else ""
     args += f"force={force}&"
-    return httpx.get(f"https://data.police.uk/api/stops-no-location?{args}")
+    return httpx2.get(f"https://data.police.uk/api/stops-no-location?{args}")
 
 
-def get_stop_and_searches_by_force(force: str, date: str) -> httpx.Response:
+def get_stop_and_searches_by_force(force: str, date: str) -> httpx2.Response:
     """Get a list of valid categories for a given data set date.
 
     Parameters:
@@ -78,6 +78,6 @@ def get_stop_and_searches_by_force(force: str, date: str) -> httpx.Response:
         Reporting month, in format <yyyy-mm>.
     """
 
-    return httpx.get(
+    return httpx2.get(
         f"https://data.police.uk/api/stops-force?date={date}&force={force}"
     )
